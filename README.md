@@ -7,6 +7,7 @@ Methodology documents from Vector Telemetry Research (VTR) — open versions of 
 | Document | Version | Status | Description |
 |----------|---------|--------|-------------|
 | [VTR-DEV-001](docs/VTR-DEV-001.md) | 0.1.0 | Draft | Development methodology — principles and rules for producing verifiable software artifacts |
+| [VTR-COMP-001](docs/VTR-COMP-001.md) | 0.1.0 | Draft | Compilation context as a security boundary — R-09 formalization and Build Context Manifest |
 
 ## Framework
 
