@@ -196,6 +196,40 @@ VTR-COMP-001 formalizes the methodology implied by that research.
 
 ---
 
+
+## Extension: Research Artifact Provenance
+
+The same principle that governs software artifact identity applies to
+research artifacts.
+
+A research question is not its statement. It is:
+
+    statement + originating artifact + epistemic classification at time of formulation
+
+Without provenance, RQ4 is an assertion.
+With provenance, RQ4 is a question with verifiable origin.
+
+**Empirical instance (2026-09-03):**
+
+The chain VS-005 -> VAL-SENTINEL-01 -> RQ4 -> vtr-deep-space
+demonstrates this property. Each transition has a commit, an artifact,
+and an explicit epistemic classification:
+
+    VS-005 (CONFIRMED finding)
+        -> VAL-SENTINEL-01 (documented empirical evidence, DOI 10.5281/zenodo.22290882)
+        -> RQ4 (PROBABLE — one empirical instance, replication required)
+        -> vtr-deep-space candidates (unverified — candidate claims only)
+
+The commits f32bb11 -> 0c74b6d -> b86dd2f -> fba5f75 -> a96cb94 -> c695068 -> f7cd182
+allow any third party to reconstruct why the connection was made,
+when, and what evidence existed at each step.
+
+Without the commits, the connection is narrative.
+With the commits, the connection is traceable.
+
+This is the research equivalent of R-09: a question without provenance
+depends on who formulated it. A question with provenance stands on its own.
+
 ## Version History
 
 | Version | Date | Change |
