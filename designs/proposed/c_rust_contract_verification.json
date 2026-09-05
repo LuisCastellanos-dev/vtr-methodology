@@ -1,0 +1,25 @@
+{
+  "id": "c_rust_contract_verification",
+  "created": "2026-09-05",
+  "created_by": "VTR — triggered by second-reviewer-llm revision 2026-09-05",
+  "hypothesis": "The vtr_event wire format specified in vtr_event.h is interpreted byte-for-byte identically by the Rust EventRecord in src/event/record.rs, including field offsets, endianness, and CRC-32 parameters.",
+  "current_state": "PROBABLE",
+  "reason_not_confirmed": "C-side layout is enforced at compile time via _Static_assert on offsetof and sizeof. Rust-side layout is specified by design. No byte-level cross-language test has been executed. Two independent specifications do not constitute a verified contract.",
+  "falsifiers": [
+    "A byte sequence produced by the C kernel module and parsed by Rust yields a different field value for any of: kind, severity, source_id, pid, ts_delta, or checksum.",
+    "CRC-32 computed in C over bytes [0..11] does not match CRC-32 computed in Rust over the same byte sequence with parameters poly=0xEDB88320, init=0xFFFFFFFF, xorout=0xFFFFFFFF, RefIn=true, RefOut=true.",
+    "The size_of::<EventRecord>() in Rust does not equal sizeof(vtr_event) in C (expected: 16 bytes on both sides).",
+    "Any field offset differs between C offsetof(vtr_event, field) and Rust's computed offset for the equivalent EventRecord field."
+  ],
+  "confirmation_criteria": "A test executable reads a binary blob produced by the C module (captured via hexdump -C on FreeBSD 14.4-RELEASE-p8 / amd64), deserializes it as EventRecord in Rust, and asserts exact field equality for all six fields plus CRC-32 validity. Test passes with SHA-256 of both the blob and the test binary recorded. Test is reproducible from a clean clone.",
+  "proposed_experiment": "1. Load vtr_sentinel.ko and trigger a known event (fork of a known process). 2. Capture raw bytes from ring buffer via hexdump -C — record SHA-256 of captured blob. 3. Write a Rust test (cargo test) that deserializes the blob as EventRecord and asserts: size_of::<EventRecord>() == 16, each field value matches expected, CRC-32 over bytes [0..11] matches checksum field. 4. Run test on FreeBSD 14.4-RELEASE-p8 / amd64. Record SHA-256 of test binary. 5. Document pass/fail with full output and timestamp UTC.",
+  "required_artifacts": [
+    "hexdump -C output of captured ring buffer event (SHA-256 recorded)",
+    "Rust test source in src/tests/cross_language_contract.rs",
+    "cargo test output showing pass/fail",
+    "SHA-256 of vtr_sentinel.ko used in the test",
+    "FreeBSD version string (uname -a) at time of test"
+  ],
+  "elevation_path": "PROBABLE → CONFIRMED on all falsifiers passing without refutation",
+  "refutation_path": "Any falsifier triggered → REFUTED, open issue with exact byte diff"
+}

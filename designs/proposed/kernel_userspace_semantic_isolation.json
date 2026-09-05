@@ -1,0 +1,22 @@
+{
+  "id": "kernel_userspace_semantic_isolation",
+  "created": "2026-09-05",
+  "created_by": "VTR — triggered by second-reviewer-llm revision 2026-09-05 (R-09 violation: NOT-COVERED documented in §2 without experiment)",
+  "hypothesis": "A userspace parser consuming vtr_event primitives cannot reinterpret an observation primitive as a semantic diagnosis without producing a detectable artifact in the evidence chain.",
+  "current_state": "NOT-COVERED",
+  "reason_not_covered": "Architecture assigns kernel=observation, userspace=interpretation. No test has verified that the boundary enforces this separation — i.e., that a userspace component cannot label a vtr_event with a semantic classification that contradicts or exceeds what the kernel primitive actually observed, without the contradiction being visible in the event record or custody chain.",
+  "falsifiers": [
+    "A userspace parser assigns EventKind::Dnp3CrcInvalid to a vtr_event whose kernel-produced fields (kind, severity, source_id, pid, ts_delta) are consistent with a benign process lifecycle event — and the custody chain does not record the reclassification as a separate event.",
+    "A userspace component elevates EventSeverity from Observed to Confirmed without producing a new EventRecord with a distinct sequence number and updated CRC-32 — making the elevation invisible in the chain."
+  ],
+  "confirmation_criteria": "A test suite exercises the userspace daemon with injected vtr_event blobs and verifies: (1) no semantic reclassification occurs without a new EventRecord being appended to the custody chain; (2) any elevation of severity produces a traceable delta record with its own CRC-32 and sequence number; (3) the kernel-produced primitive is preserved unmodified as the root of the classification chain.",
+  "proposed_experiment": "1. Inject synthetic vtr_event blobs with known field values into the userspace daemon via a test harness (bypassing /dev/vtr0). 2. Observe the custody chain output. 3. Assert: kernel primitive fields are immutable in the chain; any classification added by userspace is a new record, not a modification of the original. 4. Attempt to inject a blob that userspace would misclassify — verify the misclassification is detectable from the chain alone without author context. 5. Record SHA-256 of test harness binary and custody chain output with UTC timestamp.",
+  "required_artifacts": [
+    "Test harness source injecting synthetic vtr_event blobs",
+    "Custody chain output for each injected event (SHA-256 recorded)",
+    "Assertion log showing kernel primitive immutability",
+    "FreeBSD version string (uname -a) at time of test"
+  ],
+  "elevation_path": "NOT-COVERED → PROBABLE once test harness is designed; PROBABLE → CONFIRMED once test passes on FreeBSD 14.4-RELEASE-p8 / amd64",
+  "dependency": "Requires Phase 3 complete (/dev/vtr0 + Rust daemon integration) for full end-to-end test. Partial test via injected blobs can begin in Phase 3 development."
+}
