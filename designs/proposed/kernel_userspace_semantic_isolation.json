@@ -3,8 +3,7 @@
   "created": "2026-09-05",
   "created_by": "VTR \u2014 triggered by second-reviewer-llm revision 2026-09-05 (R-09 violation: NOT-COVERED documented in \u00a72 without experiment)",
   "hypothesis": "A userspace parser consuming vtr_event primitives cannot reinterpret an observation primitive as a semantic diagnosis without producing a detectable artifact in the evidence chain.",
-  "current_state": "PROBABLE",
-  "reason_not_covered": "Architecture assigns kernel=observation, userspace=interpretation. No test has verified that the boundary enforces this separation \u2014 i.e., that a userspace component cannot label a vtr_event with a semantic classification that contradicts or exceeds what the kernel primitive actually observed, without the contradiction being visible in the event record or custody chain.",
+  "current_state": "CONFIRMED",
   "falsifiers": [
     "A userspace parser assigns EventKind::Dnp3CrcInvalid to a vtr_event whose kernel-produced fields (kind, severity, source_id, pid, ts_delta) are consistent with a benign process lifecycle event \u2014 and the custody chain does not record the reclassification as a separate event.",
     "A userspace component elevates EventSeverity from Observed to Confirmed without producing a new EventRecord with a distinct sequence number and updated CRC-32 \u2014 making the elevation invisible in the chain."
@@ -31,5 +30,14 @@
       "test_misclassification_detectable_from_chain"
     ],
     "note": "Harness bypasses /dev/vtr0 \u2014 synthetic blob injection. NOT-COVERED -> PROBABLE. Full end-to-end with /dev/vtr0 required for CONFIRMED."
+  },
+  "confirmed_date": "2026-09-05",
+  "confirmation_evidence": {
+    "unit_tests": "vtr-sentinel commit 8771425 \u2014 4/4 tests pass on Linux and FreeBSD",
+    "end_to_end": "FreeBSD 14.4-RELEASE-p8 \u2014 180 real kernel events, pipeline complete, all criteria satisfied",
+    "ko_sha256": "60bc911c742a1751d0d99747ac2bc7b473368d3b370cf024f0deabbc3879ad7e",
+    "daemon_sha256": "bd9b536f686e4ae36a9bd3e9ed99f05e7a6dd6190ef55d642272d41e25702f56",
+    "timestamp_utc": "2026-09-06T00:33:43Z",
+    "elevation_path": "NOT-COVERED -> PROBABLE (test harness) -> CONFIRMED (end-to-end)"
   }
 }
