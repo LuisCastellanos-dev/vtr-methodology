@@ -2,10 +2,35 @@
 
 Methodology documents from Vector Telemetry Research (VTR) — open versions of VTR development and verification frameworks.
 
+## Foundational Architecture
+
+VTR's methodology is structured in three layers:
+
+```
+VTR-METH-001 (internal)
+    ↓
+How to audit — operational rules, epistemic states, coverage matrix
+
+VTR-CE-001
+    ↓
+What it means — epistemological foundation for observation,
+verification, attribution, and confirmation of computational claims
+
+VTR-RES-003
+    ↓
+Whether it can be formalized — mathematical and experimental
+program for evidence-centered auditing
+```
+
+VTR-CE-001 and VTR-RES-003 do not modify VTR-METH-001.
+They explain why it works and define the research program that validates it.
+
 ## Documents
 
 | Document | Version | Status | Description |
 |----------|---------|--------|-------------|
+| [VTR-CE-001](VTR-CE-001.md) | 1.0.0 | PROPOSED | Computational Epistemic Auditing — epistemological foundation for evidence-bounded claims |
+| [VTR-RES-003](VTR-RES-003.md) | 1.0.0 | PROPOSED | Mathematical formalization of evidence-centered auditing |
 | [VTR-DEV-001](docs/VTR-DEV-001.md) | 0.4.0 | Active | Development methodology — 3 operational rules, STATE/PROPERTY vocabulary, falsification schema |
 | [VTR-COMP-001](docs/VTR-COMP-001.md) | 0.1.0 | Active | Compilation context as a security boundary |
 
