@@ -23,10 +23,10 @@ Independent audit instructions for RQ4 Delta_A satisfaction:
 
 Audit reports are in [reviews/](reviews/).
 
-## Simplification Prompt
+## Simplification Procedure
 
 Terminology freeze and public simplification instructions:
-[VTR-DEV-001-SIMPLIFICATION-PROMPT-v1.0.1.md](VTR-DEV-001-SIMPLIFICATION-PROMPT-v1.0.1.md)
+[VTR-DEV-001-SIMPLIFICATION-PROCEDURE-v1.0.1.md](VTR-DEV-001-SIMPLIFICATION-PROCEDURE-v1.0.1.md)
 
 ## Epistemic Vocabulary (v0.4.0)
 

@@ -1,6 +1,6 @@
 # VTR-DEV-001 PUBLIC SIMPLIFICATION AND TERMINOLOGY FREEZE
 Version: 1.0.1 — 2026-09-06
-Replaces: prompt v1.0.0 (rejected — four incorrect mappings detected by external auditor)
+Replaces: procedure v1.0.0 (rejected — four incorrect mappings detected by external auditor)
 Input: VTR-DEV-001-internal.md v0.3.0 SHA e1fcdf4a...
 Output: VTR-DEV-001-public.md v0.4.0 + 3 operational rules
 
@@ -97,7 +97,7 @@ Prohibited: collapsing PROBABLE into DESIGNED_NOT_TESTED.
 
 In VTR-DEV-001-public.md run and verify:
 
-  grep -i "VTR-METH-001|Prompt Maestro|vtr-audit-tools|vtr-elite|zenodo|DOI" VTR-DEV-001-public.md
+  grep -i "VTR-METH-001|Procedure Maestro|vtr-audit-tools|vtr-elite|zenodo|DOI" VTR-DEV-001-public.md
   Expected result: 0 matches
 
 If >0, remove the complete line where it appears.
@@ -160,7 +160,7 @@ modification, only with state vocabulary mapping applied.
 
 ### 4. MANDATORY FINAL VERIFICATION — 3 COMMANDS
 
-  a) grep -i "VTR-METH-001|Prompt Maestro|vtr-audit-tools|vtr-elite" VTR-DEV-001-public.md
+  a) grep -i "VTR-METH-001|Procedure Maestro|vtr-audit-tools|vtr-elite" VTR-DEV-001-public.md
      Expected: 0
 
   b) ls -l designs/proposed/c_rust_contract_verification.json \
@@ -186,7 +186,7 @@ PROBABLE (use "likely" or "not yet reproduced"), CAPA 0.
 
 ---
 
-## What this prompt does NOT change
+## What this procedure does NOT change
 
 - The falsification schema (hypothesis / falsifiers / confirmation_criteria /
   proposed_experiment / required_artifacts) remains mandatory for every
