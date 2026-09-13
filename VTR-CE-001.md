@@ -313,6 +313,21 @@ Until these cells are populated with results, the document's status remains PROP
 that would require revision of this framework. No cell has been tested. This matrix is
 the next step — not a completed record.
 
+## Field Cases
+
+The following cases exercised specific principles of this framework in real environments.
+They constitute evidence of applicability in those instances — not validation of the
+framework as a whole. Each case maps to one or more matrix rows.
+
+| Case | Principle exercised | Outcome | Record |
+|---|---|---|---|
+| D59140 (FreeBSD vtr-sentinel-kmod, 2026-09-12) | observe ≠ attribute | Initial attribution to kernel falsified by independent external review (glebius). Reproducer defect identified. Corrected reproducer verified locally on FreeBSD 14.5-RELEASE. Falsification record preserved. | vtr-sentinel-kmod/reproducers/D59140/RECORD.md |
+
+D59140 provides a field case exercising the `observe ≠ attribute` distinction described
+by VTR-CE-001, including independent external review, falsification of the initial
+attribution, correction of the reproducer, local revalidation, and preservation of the
+resulting evidence trail.
+
 ---
 
 ## References
