@@ -254,6 +254,10 @@ auditable.
 
 ## 10. What This Framework Does Not Claim
 
+> "A CVE is a possible administrative outcome of an investigation; it is not a measure of the investigation's depth."
+
+
+
 This framework does not claim that:
 
 - All security findings can be fully confirmed. Some claims remain PROBABLE or NOT-COVERED
