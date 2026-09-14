@@ -4,7 +4,7 @@ Methodology documents from Vector Telemetry Research (VTR) — open versions of 
 
 ## Foundational Architecture
 
-VTR's methodology is structured in three layers:
+VTR's methodology is structured in four layers:
 
 ```
 VTR-METH-001 (internal)
@@ -20,17 +20,22 @@ VTR-RES-003
     ↓
 Whether it can be formalized — mathematical and experimental
 program for evidence-centered auditing
+
+VTR-RES-004
+    ↓
+Whether epistemic state separation during investigation
+is a valid, falsifiable research object
 ```
 
-VTR-CE-001 and VTR-RES-003 do not modify VTR-METH-001.
-They explain why it works and define the research program that validates it.
+VTR-CE-001, VTR-RES-003, and VTR-RES-004 do not modify VTR-METH-001.
+They explain why it works and define the research programs that validate it.
 
 ## Documents
 
 | Document | Version | Status | Description |
 |----------|---------|--------|-------------|
 | [VTR-CE-001](VTR-CE-001.md) | 1.0.0 | PROPOSED | Computational Epistemic Auditing — epistemological foundation for evidence-bounded claims |
-| [VTR-RES-003](VTR-RES-003.md) | 1.0.0 | PROPOSED | Mathematical formalization of evidence-centered auditing |
+| [VTR-RES-004](VTR-RES-004.md) | 1.0.0 | PROPOSED | Epistemic state separation in computational investigation — falsifiable methodological hypothesis |
 | [VTR-DEV-001](docs/VTR-DEV-001.md) | 0.4.0 | Active | Development methodology — 3 operational rules, STATE/PROPERTY vocabulary, falsification schema |
 | [VTR-COMP-001](docs/VTR-COMP-001.md) | 0.1.0 | Active | Compilation context as a security boundary |
 
